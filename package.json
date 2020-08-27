@@ -1,0 +1,19 @@
+{
+  "name": "promise-to-upload-dist",
+  "version": "0.0.1",
+  "description": "upload /dist to s3 & retain build history",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gnitnuj/promise-to-upload-dist.git"
+  },
+  "author": "gnitnuj",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/gnitnuj/promise-to-upload-dist/issues"
+  },
+  "homepage": "https://github.com/gnitnuj/promise-to-upload-dist#readme"
+}
