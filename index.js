@@ -70,6 +70,8 @@ module.exports = (bucket, keyPrefix, hash) => {
       const buildPromises = data.map((d) => {
         const key = path.join(
           keyPrefix,
+          '..', // go back a folder. out of /current or /release
+          'builds',
           hash,
           path.relative(path.resolve(distDir), d.filePath)
         );
