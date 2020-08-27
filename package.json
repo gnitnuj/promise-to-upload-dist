@@ -20,5 +20,8 @@
     "accumulate-files": "gist:833bcd35413f0f90d692c7d8d5bc22c8",
     "content-type": "gist:9318fbe9eae86a6e1f7e01b7eaa28cc6",
     "s3-upload": "gist:eb216ab0f687c7d9f3691f2efa7715bb"
+  },
+  "dependencies": {
+    "winston": "^3.3.3"
   }
 }
