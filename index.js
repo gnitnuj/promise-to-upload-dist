@@ -29,7 +29,7 @@ const flattenDeep = (arr) => {
   );
 };
 
-module.exports = (bucket, hash) => {
+module.exports = (bucket, keyPrefix, hash) => {
   const distDir = path.resolve("./dist");
 
   // If hash is not provided (local env deploy), assume travis
@@ -53,7 +53,7 @@ module.exports = (bucket, hash) => {
       // Current & Build promises seperated for clarity
       const currentPromises = data.map((d) => {
         const key = path.join(
-          "container/3.x/current/",
+          keyPrefix,
           path.relative(path.resolve(distDir), d.filePath)
         );
         const contentType = getContentType(d.filePath);
@@ -69,7 +69,8 @@ module.exports = (bucket, hash) => {
 
       const buildPromises = data.map((d) => {
         const key = path.join(
-          `container/3.x/builds/${hash}/`,
+          keyPrefix,
+          hash,
           path.relative(path.resolve(distDir), d.filePath)
         );
         const contentType = getContentType(d.filePath);
