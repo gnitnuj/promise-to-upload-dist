@@ -29,11 +29,8 @@ const flattenDeep = (arr) => {
   );
 };
 
-module.exports = (bucket, keyPrefix, hash) => {
-  const distDir = path.resolve("./dist");
-
-  // If hash is not provided (local env deploy), assume travis
-  hash = hash ? hash : process.env.TRAVIS_COMMIT;
+module.exports = (bucket, keyPrefix, sourcePath = "./dist") => {
+  const distDir = path.resolve(sourcePath);
 
   logger.info("uploading dist/");
 
@@ -50,8 +47,7 @@ module.exports = (bucket, keyPrefix, hash) => {
       );
     })
     .then((data) => {
-      // Current & Build promises seperated for clarity
-      const currentPromises = data.map((d) => {
+      const uploadPromises = data.map((d) => {
         const key = path.join(
           keyPrefix,
           path.relative(path.resolve(distDir), d.filePath)
@@ -67,27 +63,6 @@ module.exports = (bucket, keyPrefix, hash) => {
         );
       });
 
-      const buildPromises = data.map((d) => {
-        const key = path.join(
-          keyPrefix,
-          '..', // go back a folder. out of /current or /release
-          'builds',
-          hash,
-          path.relative(path.resolve(distDir), d.filePath)
-        );
-        const contentType = getContentType(d.filePath);
-        logger.info(`uploaded file: ${bucket}/${key}`);
-        return s3.uploadFile(
-          bucket,
-          key,
-          d.fileData,
-          contentType,
-          "public-read"
-        );
-      });
-
-      const promises = [...buildPromises, ...currentPromises];
-
-      return Promise.all(promises);
+      return Promise.all(uploadPromises);
     });
 };
