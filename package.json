@@ -1,6 +1,6 @@
 {
   "name": "promise-to-upload-dist",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "upload /dist to s3 & retain build history",
   "main": "index.js",
   "files": [
