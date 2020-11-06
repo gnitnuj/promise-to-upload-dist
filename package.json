@@ -25,6 +25,7 @@
     "s3-upload": "gist:eb216ab0f687c7d9f3691f2efa7715bb"
   },
   "dependencies": {
+    "aws-sdk": "^2.783.0",
     "winston": "^3.3.3"
   }
 }
