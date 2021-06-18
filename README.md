@@ -23,5 +23,5 @@ const uploadDist = require("promise-to-upload-dist");
 then...
 
 ```js
-uploadDist(bucket, keyPrefix, sourcePath = "./dist")
+uploadDist(bucket, keyPrefix, sourcePath = "./dist", metadata = {})
 ```
