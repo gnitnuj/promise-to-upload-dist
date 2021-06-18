@@ -29,7 +29,7 @@ const flattenDeep = (arr) => {
   );
 };
 
-module.exports = (bucket, keyPrefix, sourcePath = "./dist") => {
+module.exports = (bucket, keyPrefix, sourcePath = "./dist", metadata = {}) => {
   const distDir = path.resolve(sourcePath);
 
   logger.info("uploading dist/");
@@ -59,7 +59,8 @@ module.exports = (bucket, keyPrefix, sourcePath = "./dist") => {
           key,
           d.fileData,
           contentType,
-          "public-read"
+          "public-read",
+          metadata
         );
       });
 
