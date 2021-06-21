@@ -1,6 +1,6 @@
 {
   "name": "promise-to-upload-dist",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "description": "upload /dist to s3 & retain build history",
   "main": "index.js",
   "files": [
@@ -20,10 +20,10 @@
   },
   "homepage": "https://github.com/gnitnuj/promise-to-upload-dist#readme",
   "dependencies": {
-    "aws-sdk": "^2.783.0",
-    "winston": "^3.3.3",
     "accumulate-files": "gist:833bcd35413f0f90d692c7d8d5bc22c8",
+    "aws-sdk": "^2.783.0",
     "content-type": "gist:9318fbe9eae86a6e1f7e01b7eaa28cc6",
-    "s3-upload": "gist:eb216ab0f687c7d9f3691f2efa7715bb"
+    "s3-upload": "gist:eb216ab0f687c7d9f3691f2efa7715bb",
+    "winston": "^3.3.3"
   }
 }
